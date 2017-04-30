@@ -1,0 +1,2 @@
+F1 socre for K = 4 is "27"
+Time taken to run the code is 2156.0 sec
