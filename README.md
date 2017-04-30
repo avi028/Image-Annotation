@@ -1,2 +1,3 @@
 # SMAI_Project
-Image Annotation Project
+## Team Ravens 			
+Image Annotation Using Metric Learning in Semantic Neighbourhoods
