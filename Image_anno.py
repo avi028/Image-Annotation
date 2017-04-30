@@ -64,7 +64,7 @@ def extraxt_anno(filename):
 	 	data.append(ston(lins[x].split('   ')))
 	return data;
 
-def main():	
+def main(k):	
 	data=[]
 	data_test=[]
 	# data {} set of the features on each image of training set 
@@ -146,7 +146,7 @@ def main():
 	 			minn = len(label_set[x])	
 
 	#K = minn
-	K=4
+	K=k
 	count=0
 	F1=0
 	avg_recall=0.0
@@ -259,4 +259,4 @@ def main():
 	print F1	
 
 if __name__ == '__main__':
-	main()	
+	main(4)	
