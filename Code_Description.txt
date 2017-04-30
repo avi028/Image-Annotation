@@ -1,0 +1,25 @@
+There are to files :
+
+Read.cpp -> It is the file written to read the source fo the data of "Corel-5K" 
+          It is Implemented as seperate functions for each type of file read.
+          hvec_read()   :   reads file with extension ".hvec"
+          hvec32_read() :   reads file with extension ".hvec32"
+          fvec_read()   :   reads file with extension ".fvec"
+          each returns with a vector of values as data.      
+          ---------------------------------------------------------
+          Vec_io.c is the helper file from which we used some code.
+ 
+ ------------------------------------------------------------------------------------------------------------------
+
+Image_anno.py-> It is the main file which has the code for the project implementation.
+           code flow:
+           Extraction of data using Extraxt_float() and Extraxt_anno() functions.
+           Label_set {} : creating the image sets as per label 
+           Filling of the Co_occur matrix
+           For each Test_data : 
+                             1.Test_label_set{}       :Find the 'K' Most nearest images to the test image and seperate them
+                             2.Temp_tst_label_list{}  :the most likely occuring label for the test image                               
+                             3.Calculate Precesion and recall per image.
+           F1 Score : 2*(average_precision * average_recall)/(average_precision + average_recall)                  
+                             
+                    
