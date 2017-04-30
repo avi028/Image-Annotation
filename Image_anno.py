@@ -9,7 +9,7 @@ def stof(line):
 # fuxntion for converting an array of strings to array of integers		
 def ston(line):
 	temp = []
-	for x in xrange(0,len(line)-1):
+	for x in xrange(0,len(line)):
 		s=int(line[x])
 		temp.append(s)
 	return temp;	
@@ -128,7 +128,7 @@ def main():
 				for itr_img_l1 in xrange(0,len(label_set[l1])):
 					for itr_img_l2 in xrange(0,len(label_set[l2])):
 						if(label_set[l1][itr_img_l1] == label_set[l2][itr_img_l2]):
-							count =+1
+							count=count+1
 
 				# fill in the matrix				
 				co_occur[l1][l2]=float(count)/len(label_set[l1])
@@ -149,6 +149,8 @@ def main():
 	K=4
 	count=0
 	F1=0
+	avg_recall=0.0
+	avg_precision=0.0
 	for itr in xrange(0,len(data_test)):
 		# let test imge -> data_test[itr]
 		test_img_id= itr
@@ -212,7 +214,7 @@ def main():
 		
 		# extract K-1 labels using co-occur matrix 
 		itr_test_label=0
-		while itr_test_label < (K-1):
+		while itr_test_label <= (K-1):
 			l1_co_occur=temp_tst_label_list[len(temp_tst_label_list)-1]
 			maxx_prob=0.0
 			maxx_prob_label=-1
@@ -239,10 +241,21 @@ def main():
 			if data_anno_test[test_img_id][temp_tst_label_list[m]]==1:
 				temp_count+=1
 		# print temp_count
+		m1=temp_count
+		m2=K
+		m3=point(data_anno_test[test_img_id])
+		precision=float(m1)/m2
+		recall=float(m1)/m3
+		avg_precision+=precision
+		avg_recall+=recall
 		# # f1 score -- 2*temp_count/(K+(points_where_data_anno_test=1))
-		temp_f1 = float(2*temp_count)/(K+point(data_anno_test[test_img_id]))
-		print temp_f1
-		F1+=temp_f1
+		# temp_f1 = float(2*temp_count)/(K+point(data_anno_test[test_img_id]))
+		# print temp_f1
+	avg_precision=avg_precision /len(data_test)
+	avg_recall=avg_recall/len(data_test)	
+	avg_precision*=100
+	avg_recall*=100
+	F1=2*(avg_precision*avg_recall)/(avg_precision+avg_recall)	
 	print F1	
 
 if __name__ == '__main__':
