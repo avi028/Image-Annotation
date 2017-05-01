@@ -16,4 +16,4 @@ AS we have already uploaded the extracted files in '.txt' format for the trainin
 
 Directly run the <b>main(k)</b> function of the <I>Image_anno.py</I> with any integer value 'K' and it will run as per requirement.
 
-<b>Result.txt</b>  file contain the result obtained when ran the code of <I>'k=4'</I>
+<b>Result.txt</b>  file contain the result obtained when ran the code of <I>'k=4'</I> <I>'k=6'</I><I>'k=8'</I>
